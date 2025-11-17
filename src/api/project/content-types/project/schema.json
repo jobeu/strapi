@@ -49,6 +49,9 @@
         "Graphic Design",
         "Video Editing"
       ]
+    },
+    "URL": {
+      "type": "string"
     }
   }
 }
