@@ -467,6 +467,38 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAssetAsset extends Struct.CollectionTypeSchema {
+  collectionName: 'assets';
+  info: {
+    displayName: 'Assets';
+    pluralName: 'assets';
+    singularName: 'asset';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Display_Title: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::asset.asset'> &
+      Schema.Attribute.Private;
+    Media: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    Text_Content: Schema.Attribute.Blocks;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiBlogpostBlogpost extends Struct.CollectionTypeSchema {
   collectionName: 'blogposts';
   info: {
@@ -1050,6 +1082,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::asset.asset': ApiAssetAsset;
       'api::blogpost.blogpost': ApiBlogpostBlogpost;
       'api::project.project': ApiProjectProject;
       'plugin::content-releases.release': PluginContentReleasesRelease;
