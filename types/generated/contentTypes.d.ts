@@ -558,10 +558,12 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
       'api::project.project'
     > &
       Schema.Attribute.Private;
+    Order: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     Slug: Schema.Attribute.UID<'Title'>;
+    Subtitle: Schema.Attribute.Blocks;
     Tags: Schema.Attribute.Enumeration<
-      ['Portraits', 'Landscape', 'Graphic Design', 'Video Editing']
+      ['Case Study', 'Spacer', 'Gallery', 'Video', 'Moodboard']
     >;
     Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
